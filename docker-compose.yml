@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  # ROS Orchestrator
+  alexa-server:
+    hostname: alexa-server
+    build: ${ALEXA_SERVER_BASE_DIR}
+    volumes:
+      - ${ALEXA_SERVER_BASE_DIR}:/usr/share/alexa-server
+    ports:
+      - 8001:8000
+
+  # MongoDB
+  mongo:
+    image: mongo
+    hostname: mongo
+    volumes:
+      - ${DB_BASE_DIR}:/data/db
+    ports:
+      - 27017:27017
